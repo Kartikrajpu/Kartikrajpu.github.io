@@ -1,40 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>JPG to PDF Converter</title>
-</head>
-<body>
-
-  <h1>JPG to PDF Converter</h1>
-
-  <input type="file" id="fileInput">
-  <button id="convertButton">Convert</button>
-
-  <script>
-    const convertButton = document.getElementById("convertButton");
-    const fileInput = document.getElementById("fileInput");
-
-    convertButton.addEventListener("click", function() {
-      const file = fileInput.files[0];
-
-      fetch("https://api.cloudconvert.com/v1/convert", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Api-Key": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTY5ZTU1NzM1Y2E2NGZjNDc0YTZiNGNiMzhmNTAzNzVhMzQzYjc5ZTdmYTNmMDZiMDE0ODVhODg0YmJlYjk5MzhkNWFiM2U0MzAwZmMxMGQiLCJpYXQiOjE2NzU0ODIxMDAuMTYwNjY2LCJuYmYiOjE2NzU0ODIxMDAuMTYwNjY3LCJleHAiOjQ4MzExNTU3MDAuMTUzNjYzLCJzdWIiOiI2MTk4NDg5MCIsInNjb3BlcyI6W119.bCjvKRcf2oYf4D9ot8jZF3bCzySzBEG16JQFBsZTyv47mVhpsll0P4ZHuXvi1mztRCD2krx1_j2SwcIdV3lPw7FYyvUhDFudXb3KQbwG4tqsV9u2RgOHMqFNiXcVv1ZbzGn-Y5heBSjEHICcvF9cBch9xScGmlPgQNlrgAdqIlfbQ5zckam4qDZoNxc33SUPMIiUbJiGA8cXO19T85_4HLSneP1LnrG4riOfDhOeAdUlD19duPxSx3-forSaTxVuCRGVkkpozicZvRiuzc_UrMuqJ7qeVPTDeOcOff3I8kRlBMxPW_3HQvO8xbNVjQIApIGDCY06ElsL2uMS6zIO8LsFvJ3S1bO-94So54ti_VhgEzRHsYddlS43_BTqmBZExhuiQb45TK5YFulQvBqCDG9nF33sVtR4wGLkdzpZjA-_FLjbC6oSvcAzWylNVf0sqwWh4XKMa6MVdt7HaawdIOa2Xozt4qfUgmwNprLHLwjy8ZBpOzfbi_0FT0XM5EP2XzhGI_l3-_GkC_VC5YcqAGI3MivaZU22Aq1nS_vZHIkk8kPlIAyBOIc7NQVzg16rLVrYlRRkxNsHSVY0I5DbDYU_Seb-4X_dlahoiOa-vUnYbqBW9s_TqLR0ZhyZG4LpXUbeQSh-GDZEsoJhiqs5t3LG8rt3_cVY8VXKyRWWEv8"
-        },
-        body: JSON.stringify({
-          inputformat: "jpg",
-          outputformat: "pdf",
-          file: file
-        })
-      })
-        .then(response => response.json())
-        .then(data => {
-          window.open(data.output.url);
-        });
-    });
-  </script>
-
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Kartik: Make Money</title>
+    <style>
+      body {
+        background-color: rgb(
+          Math.floor(Math.random() * 256),
+          Math.floor(Math.random() * 256),
+          Math.floor(Math.random() * 256)
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Kartik</h1>
+    <p>
+      We help you make money by providing innovative financial solutions and
+      opportunities.
+    </p>
+  </body>
 </html>
