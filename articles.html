@@ -13,11 +13,21 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="setRandomBackgroundColor()">
     <h1>Welcome to Kartik</h1>
     <p>
       We help you make money by providing innovative financial solutions and
       opportunities.
     </p>
+
+    <script>
+      function setRandomBackgroundColor() {
+        document.body.style.backgroundColor = `rgb(
+          ${Math.floor(Math.random() * 256)},
+          ${Math.floor(Math.random() * 256)},
+          ${Math.floor(Math.random() * 256)}
+        )`;
+      }
+    </script>
   </body>
 </html>
