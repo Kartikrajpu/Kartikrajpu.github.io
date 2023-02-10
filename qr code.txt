@@ -1,0 +1,15 @@
+import qrcode
+
+# Create qr object
+qr = qrcode.QRCode(version=1, box_size=10, border=5)
+
+# Add data to qr object
+data = "hello how are you"
+qr.add_data(data)
+qr.make(fit=True)
+
+# Create an image from the QR code data
+img = qr.make_image(fill_color="black", back_color="white")
+
+# Save the image to a file
+img.save("C:\\Users\\kr031\\OneDrive\\Pictures\\Saved Pictures\\img.png")
