@@ -1,68 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Cyber Security Awareness and Football</title>
-  <style>
-    /* Neutral background */
-    body {
-      background-color: red; /* Changed from purple to yellow */
-      font-family: Arial, sans-serif;
-    }
-    /* Button styling */
-    .learn-more-button {
-      background-color: #0000ff;
-      color: #ffffff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 20px;
-      display: inline-block;
-    }
-    /* Heading styling */
-    h1, h2 {
-      color: #ffffff;
-    }
-    /* Paragraph styling */
-    p {
-      color: #ffffff;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-    /* List styling */
-    ul {
-      margin-left: 20px;
-    }
-    li {
-      margin-bottom: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English to Hindi Translation with ChatGPT</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-  <h1>Cyber Security Awareness and Football</h1>
-  <h2>Why is Cyber Security Important?</h2>
-  <p>
-    In today's digital world, cyber security is more important than ever. With increasing reliance on technology, sensitive information like personal and financial data is vulnerable to theft and abuse. Cyber attacks can also disrupt businesses and critical infrastructure, causing significant damage and loss. By understanding and practicing good cyber security habits, individuals and organizations can protect themselves and secure their information.
-  </p>
-  <h2>Why Football is a Great Sport</h2>
-  <p>
-    Football (also known as soccer in some countries) is a popular sport that is enjoyed by millions of people around the world. It is a great way to stay active and healthy, and it also helps to build teamwork and sportsmanship skills. Whether you're playing in a casual pickup game or watching your favorite team compete in a major tournament, football is an exciting and engaging sport that brings people together.
-  </p>
-  <h2>Tips for Staying Safe Online and on the Field</h2>
-  <p>
-    Whether you're browsing the web or playing a game of football, there are always risks to be aware of. Here are some tips for staying safe online and on the field:
-  </p>
-  <ul>
-    <li>Use strong, unique passwords for all your accounts and change them regularly</li>
-    <li>Keep your software and operating system up to date with the latest security updates</li>
-    <li>Be cautious when receiving emails or messages from unknown sources and never click on suspicious links</li>
-    <li>Use reputable antivirus and anti-malware software and keep it updated</li>
-    <li>Regularly back up your important data to an external source</li>
-    <li>Wear appropriate safety gear when playing sports, such as helmets or shin guards</li>
-    <li>Stay hydrated and take breaks as needed to prevent injuries and exhaustion</li>
-    <li>Follow the rules of the game and show good sportsmanship towards your opponents and teammates</li>
-  </ul>
-  <a href="more-info.html" class="learn-more-buttn">Learn More About Cyber Security</a>
-  <a href="https://www.fifa.com/" class="learn-more-button">Visit FIFA's Website</a>
-  <a href="https://www.nfhs.org/" class="learn-more-button">Visit NFHS's Website</a>
+    <h1>English to Hindi Translation with ChatGPT</h1>
+
+    <label for="englishText">Enter English Text:</label>
+    <input type="text" id="englishText" placeholder="Type your text here">
+    <button onclick="translate()">Translate</button>
+
+    <p>Translated Text:</p>
+    <p id="translatedText"></p>
+
+    <script>
+        const apiKey = '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'; // Replace with your ChatGPT API key
+        const chatgptEndpoint = 'https://api.openai.com/v1/engines/davinci/completions';
+
+        function translate() {
+            const englishText = document.getElementById('englishText').value;
+            const translatedTextElement = document.getElementById('translatedText');
+
+            // Check if the input text is not empty
+            if (englishText.trim() === '') {
+                translatedTextElement.textContent = 'Please enter some text.';
+                return;
+            }
+
+            // Make a request to the ChatGPT API for translation
+            fetch(chatgptEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    prompt: `Translate the following English text to Hindi: "${englishText}"`,
+                    max_tokens: 50 // You can adjust the token limit as needed
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.choices && data.choices.length > 0) {
+                        const translatedText = data.choices[0].text;
+                        translatedTextElement.textContent = translatedText;
+                    } else {
+                        translatedTextElement.textContent = 'Translation not available.';
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    translatedTextElement.textContent = 'Error occurred during translation.';
+                });
+        }
+    </script>
 </body>
 </html>
